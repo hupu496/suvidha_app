@@ -1,3 +1,4 @@
+
 # SUBIDHA — Essential Support & Logistics Platform
 
 <p align="center">
@@ -5,7 +6,7 @@
 </p>
 
 <p align="center">
-  A responsive web platform for personal assistance, local errands, trusted escort support, and business logistics.
+  A responsive service and logistics platform connecting customers, business partners, and riders through role-specific experiences.
 </p>
 
 <p align="center">
@@ -13,7 +14,7 @@
   <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite" />
   <img src="https://img.shields.io/badge/React%20Native%20Web-Responsive-61DAFB?logo=react&logoColor=black" alt="React Native Web" />
-  <img src="https://img.shields.io/badge/Status-Prototype-orange" alt="Prototype" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-orange" alt="Active Development" />
 </p>
 
 ---
@@ -21,124 +22,153 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Key Features](#key-features)
+- [Problem and Product Goals](#problem-and-product-goals)
 - [User Roles](#user-roles)
+- [Features](#features)
+- [Authentication and Role Separation](#authentication-and-role-separation)
 - [Technology Stack](#technology-stack)
-- [Project Architecture](#project-architecture)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Environment Configuration](#environment-configuration)
 - [Application Routes](#application-routes)
-- [Current Implementation Status](#current-implementation-status)
+- [Implementation Status](#implementation-status)
+- [Development Commands](#development-commands)
 - [Testing and Quality Checks](#testing-and-quality-checks)
 - [Deployment](#deployment)
 - [Roadmap](#roadmap)
-- [Security Considerations](#security-considerations)
+- [Security and Privacy](#security-and-privacy)
 - [Contributing](#contributing)
 - [License](#license)
 
+---
+
 ## Overview
 
-**SUBIDHA** is a personal assistance and logistics platform designed to make everyday support services easier to discover, request, and coordinate.
+**SUBIDHA** is an essential support and logistics platform intended to make everyday assistance easier to discover, request, and coordinate. It brings individual assistance and business logistics into one application while keeping each user type's experience separate.
 
-The platform brings together individual assistance and business logistics in one experience. Individuals can explore services such as personal escorts, pharmacy pickups, errands, transit assistance, and elder check-ins. Businesses can use a dedicated operational dashboard to organize dispatches, monitor tasks, and manage fleet-related workflows.
+The application is being developed with a responsive frontend using React, TypeScript, and React Native Web. It supports desktop and mobile browser layouts, shared UI components, role-specific dashboards, and light and dark themes.
 
-SUBIDHA is designed around a responsive interface that works across desktop browsers, tablets, and mobile devices. It includes customer and business portals, reusable interface components, light and dark themes, and a frontend architecture intended to support a future backend integration.
+SUBIDHA is organized around four application roles:
 
-> **Project status:** The current frontend is a working prototype. Some bookings, task statuses, user profiles, ratings, and dispatch records use illustrative demo data. Production authentication, persistent bookings, live tracking, real payments, and emergency dispatch require appropriate backend services and integrations.
+- **Customer** — discovers and requests assistance services.
+- **Business** — manages business-side tasks and logistics workflows.
+- **Rider** — accesses a dedicated rider registration, login, and operational experience.
+- **Admin** — accesses a protected administrative area for platform-level operations.
 
-## Problem Statement
+> **Project status:** SUBIDHA is under active development. The frontend contains implemented screens and workflows, but a visible interface does not automatically mean that the corresponding production service is operational. Authentication, OTP verification, document storage, bookings, dispatch, payments, location tracking, and administrative actions must be backed by secure and tested server-side APIs before production use.
 
-Everyday assistance can be difficult to coordinate, particularly for people who need help with routine errands, medical visits, local transportation, or essential deliveries.
+## Problem and Product Goals
 
-Businesses also need a structured way to coordinate pickups, deliveries, field agents, and operational tasks.
+Individuals may need help with everyday errands, pharmacy pickups, local assistance, or travel-related support. Businesses may need a more structured way to coordinate field tasks and deliveries. Service providers also need a dedicated experience rather than sharing customer or business account flows.
 
-SUBIDHA aims to address these needs through a unified platform with two complementary experiences:
+SUBIDHA aims to bring these experiences together while maintaining clear role boundaries:
 
-- **Individual assistance:** Request and organize personal support services.
-- **Business logistics:** Coordinate dispatches, field operations, and delivery-related workflows.
-
-## Key Features
-
-### 1. Public Landing Page
-
-- Introduction to the SUBIDHA platform.
-- Overview of its assistance and logistics services.
-- Navigation to informational pages and subscription plans.
-- Links to customer and business authentication.
-- Responsive layouts for mobile and desktop.
-- Mobile app download call to action.
-
-### 2. Customer Portal
-
-The customer experience is designed around everyday assistance and service coordination.
-
-- Customer dashboard and profile.
-- Personal escort service discovery.
-- Errand and pick-and-drop service options.
-- Pharmacy pickup and banking-related assistance.
-- Transit support for railway stations and airports.
-- Elder check-in and home assistance concepts.
-- Booking and task views.
-- Billing and subscription-related screens.
-- Emergency SOS interface.
-- Profile and emergency contact information.
-
-### 3. Business Portal
-
-The business experience focuses on operational coordination.
-
-- Dedicated business dashboard.
-- Dispatch task creation and management interfaces.
-- Task status and assignment displays.
-- Fleet tracking interface.
-- Subscription and invoice screens.
-- Business profile management.
-- Single-task dispatch and batch-upload interface concepts.
-- Operational metrics and completed-task summaries.
-
-### 4. Authentication and Role-Based Navigation
-
-- Separate customer and business login experiences.
-- Separate customer and business registration flows.
-- Role-specific navigation and dashboard layouts.
-- Navigation between customer and business authentication screens.
-- OTP verification interface.
-
-The frontend provides the authentication experience; secure identity verification and authorization must be enforced by a backend before production use.
-
-### 5. Responsive User Interface
-
-- Desktop layouts with wider content areas.
-- Mobile-friendly dashboard layouts.
-- Responsive service cards and forms.
-- Mobile bottom navigation for customer screens.
-- Shared layout and navigation components.
-- Reusable buttons, form fields, dialogs, and notifications.
-- Light and dark theme support.
-- Consistent spacing, typography, and color tokens.
-
-### 6. Theme Support
-
-SUBIDHA includes light and dark themes designed for readability.
-
-The visual system uses neutral backgrounds, clear text contrast, subtle borders, and green accents for primary actions. Theme state is managed through a shared context.
-
-### 7. API Integration Structure
-
-The frontend separates service logic from presentation components. API configuration and service modules provide a foundation for connecting the interface to a backend.
-
-The intended backend architecture uses Django REST Framework and PostgreSQL. Until the backend endpoints are implemented and connected, the relevant screens may rely on mock data.
+1. Give customers a straightforward way to explore and request services.
+2. Give businesses tools to organize tasks and operational workflows.
+3. Give riders a separate entry point and registration process.
+4. Provide administrators with a protected area for platform management.
+5. Keep the interface consistent across desktop and mobile screens.
 
 ## User Roles
 
-| Role | Primary responsibilities |
-|---|---|
-| Customer | Explore services, manage a profile, view bookings, and access assistance-related screens. |
-| Business partner | Manage operational tasks, dispatches, fleet-related workflows, and business account screens. |
-| Administrator | A future role for managing users, services, subscriptions, and platform operations. |
+| Role | Intended use | Entry point |
+|---|---|---|
+| Customer | Browse assistance services, manage account details, and view bookings | Customer sign in / sign up |
+| Business | Manage business account and logistics workflows | Business sign in / sign up |
+| Rider | Register as a rider and access rider-specific screens | Rider card on the public landing page |
+| Admin | Access platform administration tools | Protected admin route |
 
-Administrator functionality is a future extension and should not be considered implemented unless an administrative module is added separately.
+Role access is deliberately separated. Rider authentication is not part of the general Customer/Business sign-in selector. A user should enter the rider flow through the Rider section on the landing page. Admin routes are protected separately from public customer and business navigation.
+
+## Features
+
+### 1. Public Website
+
+- Landing page introducing SUBIDHA and its service model.
+- Service, plan, business, individual, and about sections.
+- Responsive public navigation for desktop and mobile.
+- Customer and business sign-in entry points.
+- A dedicated Rider section on the landing page with separate actions:
+  - **Continue as Rider** — opens rider login.
+  - **Register as Rider** — opens rider registration.
+- Light and dark theme support.
+
+Rider access is intentionally not exposed as a general item in the public top navigation. The Rider landing-page section is the intended public entry point for rider authentication and registration.
+
+### 2. Customer Experience
+
+The customer portal is intended for people requesting everyday support.
+
+- Customer authentication and registration screens.
+- Customer dashboard and profile area.
+- Service discovery and assistance-related screens.
+- Booking and task-related views.
+- Subscription and billing-related interface areas.
+- Emergency/SOS interface concepts.
+- Responsive dashboard navigation.
+
+The exact availability of each workflow depends on the current route and backend integration.
+
+### 3. Business Experience
+
+The business portal is intended for organizations coordinating services and field operations.
+
+- Business-specific authentication and registration.
+- Business dashboard.
+- Business profile and account screens.
+- Task and dispatch management interfaces.
+- Fleet-related screens.
+- Subscription and invoice-related interface areas.
+- Responsive navigation and dashboard layout.
+
+### 4. Rider Experience
+
+Riders have a separate authentication and registration flow.
+
+- Dedicated rider login route.
+- Dedicated rider registration route.
+- Rider-specific dashboard area and navigation.
+- Rider registration form fields for personal, contact, vehicle, identity, and bank details.
+- PDF document selection in the web registration form for the supported rider documents.
+- Rider route protection separate from customer and business route protection.
+
+**Document upload limitation:** The current web form can select and validate a PDF in the browser. Selecting a file does not by itself upload it or store it on a server. A multipart API endpoint, server-side validation, and secure document storage are required to complete document submission.
+
+### 5. Admin Experience
+
+- Separate admin route area.
+- Admin-specific route guard.
+- Admin service module and screens where implemented.
+
+The existence of an admin route or guard should not be interpreted as proof that every administrative operation is complete or production-ready. Verify the current admin pages and API behavior in the source.
+
+### 6. Authentication and Navigation
+
+- Separate customer and business login and registration flows.
+- Dedicated rider login and registration routes.
+- OTP verification interface.
+- Role-aware navigation and dashboard layouts.
+- Separate route guards for protected role areas.
+- Public navigation that does not expose rider login as a general top-level navigation item.
+
+Client-side route guards improve navigation flow, but they are not a security boundary. The backend must independently authenticate users and authorize every protected operation.
+
+### 7. Responsive UI and Themes
+
+- Desktop dashboard layouts with a sidebar.
+- Mobile navigation with a drawer and bottom navigation where applicable.
+- Shared dashboard shell and reusable layout components.
+- Reusable form fields, buttons, dialogs, and common UI elements.
+- Light and dark themes.
+- Shared theme tokens and application state.
+- Responsive landing page and role-specific screens.
+
+### 8. API Service Layer
+
+API-related code is organized into service modules rather than being embedded directly in presentation components. This provides a place to centralize requests and connect the frontend to backend endpoints.
+
+The planned backend direction is Python with Django REST Framework and PostgreSQL. Treat this as the intended architecture unless the backend repository and deployment configuration confirm that the services are already running.
 
 ## Technology Stack
 
@@ -146,150 +176,178 @@ Administrator functionality is a future extension and should not be considered i
 
 | Technology | Purpose |
 |---|---|
-| React 19 | Component-based user interface |
-| TypeScript | Static typing and maintainable application code |
+| React 19 | Component-based UI |
+| TypeScript | Static typing |
 | Vite | Development server and production bundler |
-| React Native Web | Cross-platform UI primitives rendered in the browser |
+| React Native Web | React Native-style components rendered in web browsers |
 | React Router DOM | Client-side routing |
-| Lucide React | Web-compatible interface icons |
+| Lucide React / Lucide React Native | Interface icons, depending on component usage |
 | React Hook Form | Form state management |
-| Zod | Schema validation |
+| Zod | Form and data validation |
 | React Context | Shared application and theme state |
-| CSS and React Native styles | Responsive styling and component layouts |
+| CSS and React Native styles | Layout and responsive styling |
 
-The exact dependencies and versions are defined in `package.json`.
+The installed package versions are defined in `frontend/package.json` and `frontend/package-lock.json`. Refer to those files for the exact versions currently used by the repository.
 
-### Planned Backend
+### Planned / Intended Backend
 
-| Technology | Intended purpose |
+| Technology | Intended responsibility |
 |---|---|
-| Python | Backend application language |
+| Python | Backend language |
+| Django | Backend application framework |
 | Django REST Framework | REST API and business logic |
-| PostgreSQL | Persistent relational data storage |
+| PostgreSQL | Persistent relational database |
 
-The backend stack describes the planned integration architecture; it does not imply that a production backend is currently deployed.
+Additional backend services may be introduced for file storage, OTP delivery, payments, notifications, and location updates. Their presence should be confirmed in the backend source and deployment configuration.
 
-### Development and Deployment
+### Development Tools
 
-- Git and GitHub for source control.
-- npm for dependency management.
-- Vitest for frontend unit testing.
-- GitHub Pages for static frontend hosting, if configured for the repository.
-- GitHub Actions for automated deployment, if configured.
+- Git and GitHub — version control and collaboration.
+- npm — frontend dependency management.
+- Visual Studio Code — development environment.
+- Vitest — unit testing, if configured in the current package scripts.
+- GitHub Actions — CI or deployment automation, if configured in the repository.
 
-## Project Architecture
+## Architecture
 
-The frontend follows a component-oriented structure with separate routes, layouts, shared UI components, application state, and service modules.
+The frontend is organized by responsibility:
 
-```text
-frontend/
-├── public/                      # Static public assets
-├── src/
-│   ├── app/                     # Application screens and pages
-│   │   ├── auth/                # Login, registration, verification
-│   │   ├── customer/            # Customer portal screens
-│   │   ├── business/            # Business portal screens
-│   │   ├── index.tsx            # Landing page
-│   │   ├── about.tsx            # Informational page
-│   │   ├── plan.tsx             # Subscription plans
-│   │   └── services/            # Service discovery
-│   ├── components/
-│   │   ├── auth/                # Authentication components
-│   │   ├── common/              # Reusable UI components
-│   │   ├── landing/             # Landing page components
-│   │   └── layout/              # Navigation, shells, footer
-│   ├── context/                 # Shared application/theme state
-│   ├── mocks/                   # Illustrative development data
-│   ├── routes/                  # Route definitions
-│   ├── services/                # API configuration and services
-│   ├── theme/                   # Theme tokens
-│   ├── __tests__/               # Frontend tests
-│   ├── WebApp.tsx               # Application route entry
-│   ├── main.tsx                 # React application bootstrap
-│   └── global.css               # Global styles
-├── index.html
-├── package.json
-├── package-lock.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-```
-
-*The tree illustrates the principal architectural areas. Individual files may differ as the project evolves.*
+- `app/` contains route-level screens.
+- `components/` contains reusable UI and layout components.
+- `context/` contains shared application state.
+- `routes/` contains route definitions and access guards.
+- `services/` contains API-facing service modules.
+- `theme/` contains theme definitions and design tokens.
+- `mocks/` contains development/demo data where used.
 
 ### Architecture Principles
 
-- Reusable components instead of duplicated interface code.
-- Separate customer and business experiences.
-- Shared layout components for consistent navigation.
-- Centralized theme management.
-- API service modules separated from UI rendering.
-- Responsive layouts that adapt to the available viewport.
-- Mock data isolated from the intended production API layer.
+1. Keep route-level screens separate from reusable components.
+2. Keep customer, business, rider, and admin experiences distinct.
+3. Reuse shared components where behavior and presentation are genuinely common.
+4. Keep API calls in service modules.
+5. Centralize theme and shared application state.
+6. Use server-side authorization for all protected data and actions.
+7. Keep mock/demo data distinguishable from persistent backend data.
+
+## Project Structure
+
+The following is a **logical overview** of the frontend. It is not intended to replace the actual directory listing; filenames may change as development continues.
+
+```text
+SUBIDHA/
+├── frontend/
+│   ├── public/                         # Static assets
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   ├── signup/
+│   │   │   │   └── verify-otp.tsx      # OTP verification screen
+│   │   │   ├── customer/               # Customer portal screens
+│   │   │   ├── business/               # Business portal screens
+│   │   │   ├── rider/                  # Rider portal screens
+│   │   │   ├── admin/                  # Admin screens
+│   │   │   ├── services/               # Public service screens
+│   │   │   ├── index.tsx               # Public landing page
+│   │   │   ├── about.tsx               # About page
+│   │   │   └── plan.tsx                # Subscription plans
+│   │   ├── components/
+│   │   │   ├── auth/                   # Authentication components
+│   │   │   ├── common/                 # Shared UI components
+│   │   │   ├── landing/                # Landing page components
+│   │   │   └── layout/                 # Navbar, dashboard shell, footer
+│   │   ├── context/                    # Shared app/theme state
+│   │   ├── mocks/                      # Development/demo data
+│   │   ├── routes/
+│   │   │   ├── AppRoutes.tsx           # Route registration
+│   │   │   ├── AdminRouteGuard.tsx     # Admin route protection
+│   │   │   ├── RiderRouteGuard.tsx     # Rider route protection
+│   │   │   └── index.ts                # Route constants/exports
+│   │   ├── services/
+│   │   │   ├── auth.service.ts         # Authentication API functions
+│   │   │   ├── admin.service.ts        # Admin API functions
+│   │   │   └── ...                     # Other API service modules
+│   │   ├── theme/                      # Theme tokens and definitions
+│   │   ├── WebApp.tsx                  # Application route entry
+│   │   ├── main.tsx                    # React bootstrap
+│   │   └── global.css                 # Global styles
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── README.md
+└── ...                                 # Other project files 
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-Install the following before running the project:
+Install:
 
-- Node.js compatible with the installed Vite version.
+- Node.js version compatible with the Vite version in the project.
 - npm.
 - Git.
 - A code editor such as Visual Studio Code.
 
-### 1. Clone the repository
-
-Replace the repository URL below with your actual GitHub repository URL.
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY/frontend
+git clone https://github.com/Soum12ya/Subidha.git
+cd Subidha
 ```
 
-If the repository contains only the frontend, navigate to its root instead of using the `frontend` subdirectory.
+### 2. Navigate to the Frontend
 
-### 2. Install dependencies
+```bash
+cd frontend
+```
+
+If your local checkout has a different folder layout, navigate to the directory containing the frontend `package.json`.
+
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-If `package-lock.json` is committed and you want a reproducible clean installation, use:
+For a clean installation using the committed lockfile:
 
 ```bash
 npm ci
 ```
 
-Use one installation command, not both consecutively.
+Use either `npm install` or `npm ci` as appropriate; there is no need to run both one after the other.
 
-### 3. Configure environment variables
+### 4. Configure Environment Variables
 
-Create a `.env.local` file in the frontend project root if your API configuration requires an environment variable.
+If the frontend API client expects a backend URL, create a `.env.local` file in the frontend directory:
 
 ```dotenv
 VITE_API_BASE_URL=http://localhost:8000/api/v1
 ```
 
-This is the expected local API URL when the backend is configured to run on port `8000`. Update it to match your actual backend.
+Use the exact variable name and URL expected by the current API configuration. This value is an example for a backend listening locally on port `8000`; confirm the actual backend port and API prefix.
 
-Do not put passwords, private API keys, database credentials, or other secrets in frontend environment variables. Values prefixed with `VITE_` are exposed to client-side code.
+**Important:** Variables prefixed with `VITE_` are included in the browser bundle and are visible to users. Never store database passwords, private API keys, signing secrets, or other confidential credentials in frontend environment variables.
 
-### 4. Start the development server
+### 5. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open the local URL printed by Vite in your terminal. The configured development port is `5173`, although the actual URL depends on the current Vite configuration.
+Open the local URL printed in the terminal by Vite.
 
-### 5. Build the production frontend
+### 6. Create a Production Build
 
 ```bash
 npm run build
 ```
 
-Vite generates the production assets in the `dist/` directory.
+Vite normally writes the production bundle to `dist/`.
 
 To preview the production build locally:
 
@@ -299,199 +357,235 @@ npm run preview
 
 ## Application Routes
 
-The frontend uses React Router for navigation.
+The following routes reflect the role-separated route design. Confirm exact paths in `frontend/src/routes/AppRoutes.tsx` and `frontend/src/routes/index.ts`, because route constants may evolve.
 
-The principal route groups are:
-
-| Route group | Purpose |
+| Route | Purpose |
 |---|---|
 | `/` | Public landing page |
-| `/about` | Platform information |
-| `/services` | Service discovery |
+| `/about` | About SUBIDHA |
+| `/services` | Public service discovery |
 | `/plans` | Subscription plans |
 | `/auth/login/customer` | Customer login |
 | `/auth/login/business` | Business login |
+| `/auth/login/rider` | Rider login |
 | `/auth/signup/customer` | Customer registration |
 | `/auth/signup/business` | Business registration |
-| `/auth/verify-otp` | OTP verification interface |
-| `/customer/dashboard` | Customer dashboard |
-| `/customer/bookings` | Customer bookings and task-related views |
-| `/customer/services` | Customer service discovery |
-| `/business/dashboard` | Business operations dashboard |
-| `/business/fleet` | Fleet-related interface |
-| `/business/tasks` | Business task management |
-| `/business/subscription` | Business subscription and invoice screens |
-| `/business/profile` | Business profile |
+| `/auth/signup/rider` | Rider registration |
+| `/auth/verify-otp` | OTP verification |
+| `/customer/...` | Customer portal |
+| `/business/...` | Business portal |
+| `/rider/...` | Rider portal |
+| `/admin/...` | Protected admin area |
 
-These are the intended primary paths. Confirm the actual route definitions in `src/routes/AppRoutes.tsx` and `src/routes/index.ts` before publishing, as paths can change during development.
+### Role-Entry Rules
 
-## Current Implementation Status
+- The general Sign In flow is for Customer and Business.
+- Rider login and registration are accessed from the Rider card on the public landing page.
+- Rider login and registration are not listed as a general public navbar destination.
+- Customer and Business authentication should not expose Rider as a selectable role.
+- Admin pages should be reachable only through the intended protected admin flow.
 
-| Area | Status |
+## Implementation Status
+
+This table describes the known frontend scope. It does not certify that backend integrations or production workflows are complete.
+
+| Area | Current understanding |
 |---|---|
-| Public landing page | Implemented |
-| Customer and business UI | Implemented as frontend screens |
-| Responsive layouts | Implemented and under refinement |
-| Light and dark themes | Implemented |
-| Client-side navigation | Implemented |
-| Authentication forms | Frontend implementation |
-| OTP verification | Interface implemented; production verification requires backend integration |
-| Demo profiles and task data | Illustrative mock data |
-| Persistent production bookings | Requires backend integration |
-| Live agent GPS tracking | Requires location services and backend integration |
-| Emergency SOS dispatch | UI prototype; real dispatch is not implied |
-| Subscription payments | Requires payment integration |
-| Django REST API | Planned |
-| PostgreSQL persistence | Planned for backend integration |
-| Production authorization | Requires secure backend enforcement |
+| Public landing page | Frontend implemented; includes role entry points |
+| Customer portal | Frontend screens and navigation implemented / evolving |
+| Business portal | Frontend screens and navigation implemented / evolving |
+| Rider login and registration | Dedicated frontend routes implemented / evolving |
+| Rider dashboard area | Rider-specific frontend area present |
+| Admin area | Admin route area and route guard present; verify individual operations |
+| Role-aware route guards | Client-side guards present for protected role areas |
+| OTP verification | Frontend flow exists; real verification requires backend integration |
+| Rider PDF document selection | Browser-side selection and validation; server upload/storage still required |
+| Theme support | Light and dark theme support implemented |
+| Responsive layouts | Desktop and mobile layouts implemented / under refinement |
+| Persistent bookings and dispatch | Requires verified backend integration |
+| Live rider GPS tracking | Requires location services and backend integration |
+| Payments and invoices | Requires payment and backend integration |
+| Production authorization | Must be enforced by backend APIs |
+
+Update this table whenever a feature is connected to a working backend or its implementation status changes.
+
+## Development Commands
+
+Run commands from the frontend directory:
+
+```bash
+# Install dependencies
+npm install
+
+# Start local development
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+Other scripts may be available in `package.json`. Check the `scripts` section before relying on commands such as `test`, `typecheck`, or `lint`.
 
 ## Testing and Quality Checks
 
-Run the checks defined in `package.json`.
+Before committing changes, run the checks that are actually configured in `package.json`.
 
-### TypeScript
+Recommended check:
+
+```bash
+npm run build
+```
+
+If the corresponding scripts exist, also run:
 
 ```bash
 npm run typecheck
-```
-
-### Unit tests
-
-```bash
 npm run test
+npm run lint
 ```
 
-### Production build
+Do not assume these optional scripts exist; verify the package scripts first.
 
-```bash
-npm run build
-```
+### Manual Verification Checklist
 
-Before submitting a change, verify the affected pages in both desktop and mobile viewport sizes.
-
-Recommended manual checks include:
-
-- Customer login and registration navigation.
-- Business login and registration navigation.
-- Dashboard width at desktop sizes.
-- Mobile bottom navigation and scrolling.
-- Profile pages and footer positioning.
-- Light and dark theme readability.
-- Forms, dialogs, and notifications.
-- Direct navigation to application routes.
-- Production build and deployed-route behavior.
-
-A command should be described as passing only after it has been run successfully against the current code.
+- [ ] Landing page renders at desktop and mobile widths.
+- [ ] Public navbar and mobile drawer behave correctly.
+- [ ] Customer login and registration navigate to customer routes.
+- [ ] Business login and registration navigate to business routes.
+- [ ] Rider card opens the dedicated rider login and registration routes.
+- [ ] Rider is not shown in the general Customer/Business login selector.
+- [ ] Rider is not shown as a top-level public navbar item.
+- [ ] Customer, Business, Rider, and Admin route access is checked independently.
+- [ ] Dashboard sidebars, mobile drawers, and bottom navigation work.
+- [ ] Light and dark themes remain readable.
+- [ ] Forms show validation and error states.
+- [ ] OTP flow handles success and failure responses correctly.
+- [ ] Direct URL navigation and browser refresh work on deployed routes.
+- [ ] Production build completes successfully.
 
 ## Deployment
 
-### Option 1: Static Hosting
-
-The Vite production build can be deployed to a static hosting provider.
-
-Build the project:
+The Vite frontend can be deployed to a static hosting provider after a successful production build.
 
 ```bash
 npm run build
 ```
 
-Deploy the contents of `dist/` using your hosting provider's supported workflow.
+Deploy the generated `dist/` directory using the hosting provider's supported workflow.
 
-### Option 2: GitHub Pages
+### GitHub Pages
 
-If you deploy to a repository-based GitHub Pages URL, configure Vite's `base` option to match the repository path.
-
-For example, a project hosted at:
+For a repository-based GitHub Pages URL such as:
 
 ```text
 https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/
 ```
 
-typically needs a base path such as:
+Vite may need a matching `base` setting in `vite.config.ts`:
 
 ```ts
 base: '/YOUR_REPOSITORY/',
 ```
 
-A root-domain or custom-domain deployment generally uses a different base path.
+A root domain or custom domain generally uses a different base path.
 
-If the project uses client-side routing, configure the hosting workflow to handle direct navigation and page refreshes. The repository may use a generated `404.html` fallback and a `.nojekyll` file, depending on its deployment configuration.
-
-Check `vite.config.ts`, `package.json`, and `.github/workflows/` to confirm the current deployment setup before running deployment commands.
+Because SUBIDHA uses client-side routing, configure the hosting provider to support direct navigation and page refreshes on nested routes. Confirm the repository's actual deployment workflow before assuming GitHub Pages is configured.
 
 ## Roadmap
 
-### Frontend
+### Frontend and UX
 
-- [ ] Finish responsive layout and footer refinements.
-- [ ] Validate authentication switching for all customer/business flows.
+- [ ] Complete and verify customer, business, rider, and admin flows.
 - [ ] Improve loading, empty, error, and success states.
-- [ ] Verify keyboard navigation and accessibility.
+- [ ] Finish responsive checks across desktop, tablet, and mobile.
+- [ ] Improve accessibility and keyboard navigation.
 - [ ] Add consistent form validation and feedback.
-- [ ] Complete desktop, tablet, and mobile UI checks.
+- [ ] Verify route refresh and deep-link behavior in production.
 
-### Backend and Data
+### Authentication and Account Management
 
-- [ ] Build the Django REST Framework backend.
-- [ ] Configure PostgreSQL and database migrations.
-- [ ] Implement secure registration, login, and OTP verification.
-- [ ] Add server-side role-based authorization.
-- [ ] Persist users, bookings, tasks, and subscriptions.
-- [ ] Implement task assignment and dispatch APIs.
-- [ ] Integrate location updates and agent tracking.
-- [ ] Integrate payment processing and invoice records.
-- [ ] Add audit logs, monitoring, and error reporting.
+- [ ] Complete secure backend registration and login for every supported role.
+- [ ] Complete OTP delivery and server-side OTP verification.
+- [ ] Enforce role-based permissions in backend APIs.
+- [ ] Implement secure session/token lifecycle and logout behavior.
+- [ ] Add account recovery and verification flows as required.
 
-### Production Readiness
+### Rider Operations
 
-- [ ] Add automated CI checks.
-- [ ] Configure production environment variables.
-- [ ] Add API and integration tests.
-- [ ] Review security, privacy, and access control.
-- [ ] Validate emergency workflows before offering them as a real service.
+- [ ] Connect rider registration to the backend.
+- [ ] Implement secure PDF document upload and storage.
+- [ ] Add server-side document validation and review status.
+- [ ] Implement rider availability and delivery/task assignment.
+- [ ] Add reliable location updates and tracking with user consent.
+- [ ] Implement rider earnings and delivery history where required.
 
-## Security Considerations
+### Customer and Business Operations
 
-SUBIDHA handles workflows that may involve personal details, addresses, emergency contacts, and location information.
+- [ ] Persist customer bookings and service requests.
+- [ ] Implement business task creation, assignment, and dispatch APIs.
+- [ ] Connect fleet and task status updates to persistent data.
+- [ ] Add notifications and booking updates.
+- [ ] Integrate subscriptions, invoices, and payment processing.
 
-Before production deployment:
+### Admin and Production Operations
+
+- [ ] Complete admin user and role management.
+- [ ] Add operational monitoring and audit logs.
+- [ ] Add automated frontend and backend CI checks.
+- [ ] Configure production secrets and environment settings.
+- [ ] Complete security, privacy, and performance reviews.
+- [ ] Test critical workflows end to end before launch.
+
+## Security and Privacy
+
+SUBIDHA may handle personal information such as names, phone numbers, addresses, identity documents, bank details, emergency contacts, and location information. These data types require careful handling.
+
+Before production use:
 
 - Enforce authentication and authorization on the server.
-- Never rely solely on client-side role selection to protect customer or business data.
-- Validate all incoming data on the backend.
+- Never rely only on frontend route guards or role selection to protect data.
+- Validate and sanitize all incoming data on the backend.
 - Use HTTPS for production traffic.
-- Protect sensitive data and limit its retention.
-- Request location permission only when needed and explain its purpose.
-- Avoid logging passwords, OTPs, or unnecessary personal information.
-- Protect payment operations with a trusted payment provider.
-- Do not represent demo SOS or GPS interfaces as operational emergency services.
-- Store secrets in appropriate server-side configuration rather than frontend code.
+- Store uploaded identity and vehicle documents in private storage with access controls.
+- Limit access to sensitive documents and define retention/deletion policies.
+- Do not expose bank details, identity numbers, OTPs, or tokens in logs.
+- Keep secrets and database credentials on the server, not in frontend code.
+- Request location permission only when necessary and explain why it is needed.
+- Use a trusted payment provider; do not store raw card details.
+- Do not represent demo SOS, GPS, or dispatch screens as real emergency services.
+- Apply rate limiting and abuse protection to authentication and OTP endpoints.
 
 ## Contributing
 
-Contributions and improvements are welcome.
+Contributions are welcome.
 
 1. Fork the repository.
-2. Create a feature branch.
-3. Make focused changes.
-4. Run the relevant type checks, tests, and production build.
-5. Review the UI at desktop and mobile sizes.
-6. Open a pull request describing the change.
+2. Create a focused feature branch.
+3. Make changes consistent with the existing architecture.
+4. Run the relevant checks from `package.json`.
+5. Test affected role flows on desktop and mobile.
+6. Commit with a clear message.
+7. Open a pull request describing the change and any remaining limitations.
 
-Suggested branch naming:
+Suggested branch names:
 
 ```text
+feature/rider-registration
 feature/customer-bookings
 feature/business-dispatch
-fix/mobile-footer
-fix/theme-contrast
+feature/admin-management
+fix/mobile-navigation
+fix/auth-role-routing
 ```
 
 ## License
 
-No license has been specified yet.
+No license has been specified in this repository documentation.
 
-Before making the repository public or accepting external contributions, add a `LICENSE` file with the license you choose. Until then, do not assume that others have permission to reuse or redistribute the code.
+Add a `LICENSE` file before explicitly granting others permission to use, modify, or redistribute the project. Until a license is added, do not assume the source code is open for reuse.
 
 ---
 
